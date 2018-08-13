@@ -78,11 +78,12 @@ cluster.sequences.default <- function(seqs, clustalo.exe = 'clustalo',
     if (127 == suppressWarnings({system2(clustalo.exe, args = "--help", stdout = NULL)})) {
         stop("Clustal Omega executable no found")
     }
-
+    
+    # TODO add a better way to solve this problem with trailing backslashes
     system2(clustalo.exe,
-            glue::glue("--full -i {gsub('\\\\', '\\\\', seqs)}",
-                       " --distmat-out {gsub('\\\\', '\\\\', out.distfile)}",
-                       " -o {gsub('\\\\', '\\\\', out.fastafle)} --force" ))
+            glue::glue("--full -i {gsub('\\\\\\\\', '\\\\\\\\\\\\\\\\', seqs)}",
+                       " --distmat-out {gsub('\\\\\\\\', '\\\\\\\\\\\\\\\\', out.distfile)}",
+                       " -o {gsub('\\\\\\\\', '\\\\\\\\\\\\\\\\', out.fastafle)} --force" ))
 
     print(glue::glue("Clustal run finished, \n",
                      "Distance matrix stored in ",
