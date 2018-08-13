@@ -80,9 +80,9 @@ cluster.sequences.default <- function(seqs, clustalo.exe = 'clustalo',
     }
 
     system2(clustalo.exe,
-            glue::glue("--full -i {seqs}",
-                       " --distmat-out {out.distfile}",
-                       " -o {out.fastafle} --force" ))
+            glue::glue("--full -i {gsub('\\\\', '\\\\', seqs)}",
+                       " --distmat-out {gsub('\\\\', '\\\\', out.distfile)}",
+                       " -o {gsub('\\\\', '\\\\', out.fastafle)} --force" ))
 
     print(glue::glue("Clustal run finished, \n",
                      "Distance matrix stored in ",
