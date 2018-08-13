@@ -60,7 +60,8 @@ cluster.sequences.character <- function(seqs, clustalo.exe = 'clustalo',
                                       ...) {
 
     if (!all(file.exists(seqs))) return(cluster.sequences.XStringSet(Biostrings::BStringSet(seqs, ...)))
-    return(cluster.sequences.default(seqs))
+    return(cluster.sequences.default(seqs, clustalo.exe = clustalo.exe,
+                                     out.distfile = out.distfile, out.fastafle = out.fastafle))
 
 }
 
