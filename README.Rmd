@@ -1,0 +1,43 @@
+---
+output:
+  md_document:
+    variant: markdown_github
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+# ggseqmsa
+
+The goal of ggseqmsa is to cluster and do cool plots on 
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+```{r example}
+require(ggseqmsa)
+
+fakeseqences_char <- c('PEPTIDES','MYPEPTID','MYPEPTLD',
+                       'TIDALESS','PRTMICSR')
+
+fakesequences_aastrng <- Biostrings::AAStringSet(
+    c('PEPTIDES','MYPEPTID','MYPEPTLD',
+      'TIDALESS','PRTMICSR'))
+
+fakeseqences_file <- tempfile()
+Biostrings::writeXStringSet(fakesequences_aastrng, fakeseqences_file)
+
+g <- draw.msa.dendrogam(fakeseqences_char, cutoff = 0.5)
+# g<-draw.msa.dendrogam(fakesequences_aastrng, cutoff = 0.5)
+# g<-draw.msa.dendrogam(fakeseqences_file, cutoff = 0.5)
+
+print(g)
+```
