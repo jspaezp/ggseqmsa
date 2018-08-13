@@ -50,7 +50,8 @@ cluster.sequences.XStringSet <- function(seqs, clustalo.exe = 'clustalo',
                                          in.fastafile = tempfile(), ...) {
     print(glue::glue("Generated temp fasta in {in.fastafile}"))
     Biostrings::writeXStringSet(seqs, in.fastafile)
-    cluster.sequences.character(in.fastafile, ...)
+    return(cluster.sequences.character(in.fastafile, clustalo.exe = clustalo.exe,
+                                out.distfile = out.distfile, out.fastafle = out.fastafle,...))
 }
 
 #' @describeIn cluster.sequences
@@ -60,7 +61,8 @@ cluster.sequences.character <- function(seqs, clustalo.exe = 'clustalo',
                                       ...) {
 
     if (!all(file.exists(seqs))) return(cluster.sequences.XStringSet(Biostrings::BStringSet(seqs, ...)))
-    return(cluster.sequences.default(seqs))
+    return(cluster.sequences.default(seqs, clustalo.exe = clustalo.exe,
+                                     out.distfile = out.distfile, out.fastafle = out.fastafle))
 
 }
 
