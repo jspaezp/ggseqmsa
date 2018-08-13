@@ -15,11 +15,13 @@ get.seqs <- function(seqs, ...) {
 
 
 #' @describeIn get.seqs
+#' @export
 get.seqs.XStringSet <- function(seqs, ...) {
     return(seqs)
 }
 
 #' @describeIn get.seqs
+#' @export
 get.seqs.character <- function(seqs, ...) {
     if (all(file.exists(seqs))) return(Biostrings::readBStringSet(seqs, ...))
     return(Biostrings::BStringSet(seqs, ...))
@@ -42,6 +44,7 @@ cluster.sequences <- function(seqs, clustalo.exe = 'clustalo',
 }
 
 #' @describeIn cluster.sequences
+#' @export
 cluster.sequences.XStringSet <- function(seqs, clustalo.exe = 'clustalo',
                                          out.distfile = tempfile(), out.fastafle = tempfile(),
                                          in.fastafile = tempfile(), ...) {
@@ -51,6 +54,7 @@ cluster.sequences.XStringSet <- function(seqs, clustalo.exe = 'clustalo',
 }
 
 #' @describeIn cluster.sequences
+#' @export
 cluster.sequences.character <- function(seqs, clustalo.exe = 'clustalo',
                                       out.distfile = tempfile(), out.fastafle = tempfile(),
                                       ...) {
@@ -62,6 +66,7 @@ cluster.sequences.character <- function(seqs, clustalo.exe = 'clustalo',
 
 
 #' @describeIn cluster.sequences
+#' @export
 cluster.sequences.default <- function(seqs, clustalo.exe = 'clustalo',
                                         out.distfile = tempfile(), out.fastafle = tempfile(),
                                         ...) {
@@ -91,6 +96,7 @@ cluster.sequences.default <- function(seqs, clustalo.exe = 'clustalo',
 
 # Function to parse the CO output
 #
+#' @export
 parse.clustal.dist.matrix <- function(file) {
     num_values <- as.numeric(scan(file, n = 1))
     distmat <- data.table::fread(file, skip = 1)

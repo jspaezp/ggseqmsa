@@ -16,7 +16,8 @@ knitr::opts_chunk$set(
 
 # ggseqmsa
 
-The goal of ggseqmsa is to cluster and do cool plots on 
+The goal of ggseqmsa is to cluster and do cool plots on multple 
+sequnce alignments (emphasizing on small peptides)
 
 ## Example
 
@@ -36,8 +37,15 @@ fakeseqences_file <- tempfile()
 Biostrings::writeXStringSet(fakesequences_aastrng, fakeseqences_file)
 
 g <- draw.msa.dendrogam(fakeseqences_char, cutoff = 0.5)
-# g<-draw.msa.dendrogam(fakesequences_aastrng, cutoff = 0.5)
-# g<-draw.msa.dendrogam(fakeseqences_file, cutoff = 0.5)
+
+# g<-draw.msa.dendrogam(fakesequences_aastrng, cutoff = 0.5) # It would be equivalent to run thi
+# g<-draw.msa.dendrogam(fakeseqences_file, cutoff = 0.5) # Or this
 
 print(g)
 ```
+
+
+# Dependencies
+
+Currently depends on having clustal omega installed locally and be loadable from your path for
+most of the functionality
